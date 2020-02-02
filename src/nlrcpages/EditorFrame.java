@@ -153,8 +153,8 @@ public class EditorFrame extends JFrame {
 
 	String ctype ="";
 	Timer timer;
-	String monthList[] = {"January","February","March","April","May","June","July","August","September","October","November","December"};
-	String currency[] = {"₱","$","¥","€","Rp","₩","₦","Ksh","฿","₫","৳"};
+	String monthList[] = {"JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"};
+	String currency[] = {"PHP ₱","US $","AUD $","NZ $","HK $","SG $","CAN $","JAP ¥","EURO €","KOR ₩","SAR","BRIT £"};
 	private JTable table_3;
 	private JTextField textField_7;
 	private JTextField textField_8;
@@ -1379,11 +1379,7 @@ public class EditorFrame extends JFrame {
  						//nlrcMonth.setText(rs.getString("Date_app_nlrc"));
  						
  						String daP = rs.getString("date_prom");
- 						if(daP.equals("----------")) {
- 							dProM.setSelectedIndex(0);
- 							dPromD.setSelectedIndex(0);
- 							dPromY.setSelectedIndex(0);
- 						}else {
+ 						try {
  							java.sql.Date daPDAT = java.sql.Date.valueOf(daP);
  	 						cal15.setTime(daPDAT);
  	 						int daPDATM = cal15.get(Calendar.MONTH);
@@ -1400,12 +1396,18 @@ public class EditorFrame extends JFrame {
  	 				 		}
  	 						int daPDATMDY = cal15.get(Calendar.YEAR);
  	 						this_yearIndex = 0;
- 	 				 		for(int year = 1905 ; year <= this_year_now  ; year++ ) {
+ 	 				 		for(int year = 1978 ; year <= this_year_now  ; year++ ) {
  	 				 			if(year == daPDATMDY) {
  	 				 				dPromY.setSelectedIndex(this_yearIndex+1);
  	 				 			}
  	 				 			this_yearIndex++;
  	 				 		}
+ 						}catch(Exception x) {
+ 							
+ 	 							dProM.setSelectedIndex(0);
+ 	 							dPromD.setSelectedIndex(0);
+ 	 							dPromY.setSelectedIndex(0);
+ 	 						
  						}
  						
  						
@@ -1427,7 +1429,7 @@ public class EditorFrame extends JFrame {
  				 		}
  						int nlrcYear = cal5.get(Calendar.YEAR);
  						this_yearIndex = 0;
- 				 		for(int year = 1905 ; year <= this_year_now  ; year++ ) {
+ 				 		for(int year = 1978 ; year <= this_year_now  ; year++ ) {
  				 			if(year == nlrcYear) {
  				 				nlrcY.setSelectedIndex(this_yearIndex);
  				 			}
@@ -1436,11 +1438,7 @@ public class EditorFrame extends JFrame {
  				 		//
  				 		
  				 		String appealfeeM1 = rs.getString("ap_date");
- 				 		if(appealfeeM1.equals("----------")) {
- 				 			dMailM.setSelectedIndex(0);
- 							dMailD .setSelectedIndex(0);
- 							dMailY .setSelectedIndex(0);
- 				 		}else {
+ 				 		try {
 	 						java.sql.Date appealfeeMDAT = java.sql.Date.valueOf(appealfeeM1);
 	 						cal16.setTime(appealfeeMDAT);
 	 						int appealfeeMM = cal16.get(Calendar.MONTH);
@@ -1457,20 +1455,21 @@ public class EditorFrame extends JFrame {
 	 				 		}
 	 						int appealfeeMY = cal16.get(Calendar.YEAR);
 	 						this_yearIndex = 0;
-	 				 		for(int year = 1905 ; year <= this_year_now  ; year++ ) {
+	 				 		for(int year = 1978 ; year <= this_year_now  ; year++ ) {
 	 				 			if(year == appealfeeMY) {
 	 				 				appealfeeY.setSelectedIndex(this_yearIndex+1);
 	 				 			}
 	 				 			this_yearIndex++;
 	 				 		}
- 				 		}
+ 				 		}catch(Exception x) {
+ 				 			
+ 	 				 			dMailM.setSelectedIndex(0);
+ 	 							dMailD .setSelectedIndex(0);
+ 	 							dMailY .setSelectedIndex(0);
+ 	 				 		}
  				 		//
  				 		String bondDM1 = rs.getString("date_bnd_new");
- 				 		if(bondDM1.equals("----------")) {
- 				 			bondDD .setSelectedIndex(0);
- 				 			bondDM .setSelectedIndex(0);
- 				 			bondDY .setSelectedIndex(0);
- 				 		}else {
+ 				 		try{
 	 						java.sql.Date bondDM1DAT = java.sql.Date.valueOf(bondDM1);
 	 						cal17.setTime(bondDM1DAT);
 	 						int bondDMM = cal17.get(Calendar.MONTH);
@@ -1487,20 +1486,21 @@ public class EditorFrame extends JFrame {
 	 				 		}
 	 						int bondDYY = cal17.get(Calendar.YEAR);
 	 						this_yearIndex = 0;
-	 				 		for(int year = 1905 ; year <= this_year_now  ; year++ ) {
+	 				 		for(int year = 1978 ; year <= this_year_now  ; year++ ) {
 	 				 			if(year == bondDYY) {
 	 				 				bondDY.setSelectedIndex(this_yearIndex+1);
 	 				 			}
 	 				 			this_yearIndex++;
 	 				 		}
- 				 		}
+ 				 		}catch(Exception x) {
+ 				 			
+ 	 				 			bondDD .setSelectedIndex(0);
+ 	 				 			bondDM .setSelectedIndex(0);
+ 	 				 			bondDY .setSelectedIndex(0);
+ 	 				 		}
  				 		//
  				 		String bndm1 = rs.getString("bndm_new");
- 				 		if(bndm1.equals("----------")) {
- 				 			bndd .setSelectedIndex(0);
- 				 			bndm .setSelectedIndex(0);
- 				 			bndy .setSelectedIndex(0);
- 				 		}else {
+ 				 		try {
 	 						java.sql.Date bndmddat = java.sql.Date.valueOf(bndm1);
 	 						cal18.setTime(bndmddat);
 	 						int bndmddatm = cal18.get(Calendar.MONTH);
@@ -1517,20 +1517,21 @@ public class EditorFrame extends JFrame {
 	 				 		}
 	 						int bndmddaty = cal18.get(Calendar.YEAR);
 	 						this_yearIndex = 0;
-	 				 		for(int year = 1905 ; year <= this_year_now  ; year++ ) {
+	 				 		for(int year = 1978 ; year <= this_year_now  ; year++ ) {
 	 				 			if(year == bndmddaty) {
 	 				 				bndy.setSelectedIndex(this_yearIndex+1);
 	 				 			}
 	 				 			this_yearIndex++;
 	 				 		}
- 				 		}
+ 				 		}catch(Exception x) {
+ 				 		
+ 	 				 			bndd .setSelectedIndex(0);
+ 	 				 			bndm .setSelectedIndex(0);
+ 	 				 			bndy .setSelectedIndex(0);
+ 	 				 		}
  				 		
  				 		String bndm2 = rs.getString("date_mr_filed2");
- 				 		if(bndm2.equals("----------")) {
- 				 			dateMRM2 .setSelectedIndex(0);
- 				 			dateMRD2 .setSelectedIndex(0);
- 				 			dateMRY2 .setSelectedIndex(0);
- 				 		}else {
+ 				 		try {
 	 						java.sql.Date bndmddat2 = java.sql.Date.valueOf(bndm2);
 	 						cal19.setTime(bndmddat2);
 	 						int bndmddatm2 = cal19.get(Calendar.MONTH);
@@ -1547,24 +1548,25 @@ public class EditorFrame extends JFrame {
 	 				 		}
 	 						int bndmddaty2 = cal19.get(Calendar.YEAR);
 	 						this_yearIndex = 0;
-	 				 		for(int year = 1905 ; year <= this_year_now  ; year++ ) {
+	 				 		for(int year = 1978 ; year <= this_year_now  ; year++ ) {
 	 				 			if(year == bndmddaty2) {
 	 				 				dateMRY2.setSelectedIndex(this_yearIndex+1);
 	 				 			}
 	 				 			this_yearIndex++;
 	 				 		}
- 				 		}
+ 				 		}catch(Exception x) {
+ 				 			if(bndm2.equals("-----0---")) {
+ 	 				 			dateMRM2 .setSelectedIndex(0);
+ 	 				 			dateMRD2 .setSelectedIndex(0);
+ 	 				 			dateMRY2 .setSelectedIndex(0);
+ 	 				 		}
  						
  						
 
  						//dateAppMonth.setText(rs.getString("Date_app_prom"));
  				 		
  				 		String dateProm_Month = rs.getString("Date_app_prom");
- 				 		if(dateProm_Month.equals("----------")) {
- 				 			dateAppPonenteM.setSelectedIndex(0);
- 				 			dateAppPoneneteD .setSelectedIndex(0);
- 				 			dateAppPoneneteY .setSelectedIndex(0);
- 				 		}else {
+ 				 		try {
 	 						java.sql.Date dPromMonthDat = java.sql.Date.valueOf(dateProm_Month);
 	 						cal6.setTime(dPromMonthDat);
 	 						int datePrMonth = cal6.get(Calendar.MONTH);
@@ -1581,21 +1583,23 @@ public class EditorFrame extends JFrame {
 	 				 		}
 	 						int dateProYear = cal6.get(Calendar.YEAR);
 	 						this_yearIndex = 0;
-	 				 		for(int year = 1905 ; year <= this_year_now  ; year++ ) {
+	 				 		for(int year = 1978 ; year <= this_year_now  ; year++ ) {
 	 				 			if(year == dateProYear) {
 	 				 				dateAppPoneneteY .setSelectedIndex(this_yearIndex+1);
 	 				 			}
 	 				 			this_yearIndex++;
 	 				 		}
- 				 		}
+ 				 		}catch(Exception c) {
+ 				 			
+ 	 				 			dateAppPonenteM.setSelectedIndex(0);
+ 	 				 			dateAppPoneneteD .setSelectedIndex(0);
+ 	 				 			dateAppPoneneteY .setSelectedIndex(0);
+ 	 				 		}
+ 				 		
  				 		
  						//dateMRMonth.setText(rs.getString("Date_mr_filed"));
  						String dateMRFILE1_Month = rs.getString("Date_mr_filed");
- 						if(dateMRFILE1_Month.equals("----------")) {
- 							dateMRM1.setSelectedIndex(0);
- 							dateMRD1 .setSelectedIndex(0);
- 							dateMRY1 .setSelectedIndex(0);
- 						}else {
+ 						try {
 	 						java.sql.Date dateMRFILE1_MonthDAT = java.sql.Date.valueOf(dateMRFILE1_Month);
 	 						cal8.setTime(dateMRFILE1_MonthDAT);
 	 						int dateMRFILE1 = cal8.get(Calendar.MONTH);
@@ -1612,12 +1616,18 @@ public class EditorFrame extends JFrame {
 	 				 		}
 	 						int dateMRFILE1DY = cal8.get(Calendar.YEAR);
 	 						this_yearIndex = 0;
-	 				 		for(int year = 1905 ; year <= this_year_now  ; year++ ) {
+	 				 		for(int year = 1978 ; year <= this_year_now  ; year++ ) {
 	 				 			if(year == dateMRFILE1DY) {
 	 				 				dateMRY1.setSelectedIndex(this_yearIndex+1);
 	 				 			}
 	 				 			this_yearIndex++;
 	 				 		}
+ 						}catch(Exception aas) {
+ 						
+ 	 							dateMRM1.setSelectedIndex(0);
+ 	 							dateMRD1 .setSelectedIndex(0);
+ 	 							dateMRY1 .setSelectedIndex(0);
+ 	 						
  						}
  				 		
  						
@@ -1636,11 +1646,7 @@ public class EditorFrame extends JFrame {
  						
  						//entryJudgement.setText(rs.getString("entry_judgment"));
  						String ej_Month = rs.getString("entry_judgment");
- 						if(ej_Month.equals("----------")) {
- 							entryJM.setSelectedIndex(0);
- 							entryJD .setSelectedIndex(0);
- 							entryJY .setSelectedIndex(0);
- 						}else {
+ 						try {
 	 						java.sql.Date ej_MonthDAT = java.sql.Date.valueOf(ej_Month);
 	 						cal9.setTime(ej_MonthDAT);
 	 						int ejMonth = cal9.get(Calendar.MONTH);
@@ -1657,12 +1663,17 @@ public class EditorFrame extends JFrame {
 	 				 		}
 	 						int ejYear = cal9.get(Calendar.YEAR);
 	 						this_yearIndex = 0;
-	 				 		for(int year = 1905 ; year <= this_year_now  ; year++ ) {
+	 				 		for(int year = 1978 ; year <= this_year_now  ; year++ ) {
 	 				 			if(year == ejYear) {
 	 				 				entryJY.setSelectedIndex(this_yearIndex+1);
 	 				 			}
 	 				 			this_yearIndex++;
 	 				 		}
+ 						}catch(Exception a){
+ 							
+ 	 							entryJM.setSelectedIndex(0);
+ 	 							entryJD .setSelectedIndex(0);
+ 	 							entryJY .setSelectedIndex(0);
  						}
  						
  						reamarkTf.setText(rs.getString("remarks"));
@@ -1684,7 +1695,7 @@ public class EditorFrame extends JFrame {
  				 		}
  						int oeccYear = cal4.get(Calendar.YEAR);
  						this_yearIndex = 0;
- 				 		for(int year = 1905 ; year <= this_year_now  ; year++ ) {
+ 				 		for(int year = 1978 ; year <= this_year_now  ; year++ ) {
  				 			if(year == oeccYear) {
  				 				OECCYear.setSelectedIndex(this_yearIndex);
  				 			}
@@ -1692,11 +1703,7 @@ public class EditorFrame extends JFrame {
  				 		}
  						//dateCommMonth.setText(rs.getString("Date_rec_com"));
  						String ponenteMonth = rs.getString("Date_rec_com");
- 						if(ponenteMonth.equals("----------")) {
- 							ponenteDM.setSelectedIndex(0);
- 							ponenteDD .setSelectedIndex(0);
- 							ponenteDY .setSelectedIndex(0);
- 						}else {	
+ 						try {	
 	 						java.sql.Date ponenteMonthDat = java.sql.Date.valueOf(ponenteMonth);
 	 						cal7.setTime(ponenteMonthDat);
 	 						int ponenteMMonth = cal7.get(Calendar.MONTH);
@@ -1713,21 +1720,23 @@ public class EditorFrame extends JFrame {
 	 				 		}
 	 						int ponenteYear = cal7.get(Calendar.YEAR);
 	 						this_yearIndex = 0;
-	 				 		for(int year = 1905 ; year <= this_year_now  ; year++ ) {
+	 				 		for(int year = 1978 ; year <= this_year_now  ; year++ ) {
 	 				 			if(year == ponenteYear) {
 	 				 				ponenteDY.setSelectedIndex(this_yearIndex+1);
 	 				 			}
 	 				 			this_yearIndex++;
 	 				 		}
+ 						}catch(Exception z) {
+ 							
+ 	 							ponenteDM.setSelectedIndex(0);
+ 	 							ponenteDD .setSelectedIndex(0);
+ 	 							ponenteDY .setSelectedIndex(0);
+ 	 						
  						}
  				 		
  						//dateMRproMonth.setText(rs.getString("date_mr_prom"));
  						String rabDesM = rs.getString("date_mr_prom");
- 						if(rabDesM.equals("----------")) {
- 							rabDM.setSelectedIndex(0);
- 							rabDD .setSelectedIndex(0);
- 							rabDD .setSelectedIndex(0);
- 						}else {
+ 						try {
 	 						java.sql.Date rabDesMDAT = java.sql.Date.valueOf(rabDesM);
 	 						cal12.setTime(rabDesMDAT);
 	 						int rabDesMDATM = cal12.get(Calendar.MONTH);
@@ -1744,21 +1753,23 @@ public class EditorFrame extends JFrame {
 	 				 		}
 	 						int rabDesMDATY = cal12.get(Calendar.YEAR);
 	 						this_yearIndex = 0;
-	 				 		for(int year = 1905 ; year <= this_year_now  ; year++ ) {
+	 				 		for(int year = 1978 ; year <= this_year_now  ; year++ ) {
 	 				 			if(year == rabDesMDATY) {
 	 				 				rabDY .setSelectedIndex(this_yearIndex+1);
 	 				 			}
 	 				 			this_yearIndex++;
 	 				 		}
+ 						}catch(Exception a) {
+ 							
+ 	 							rabDM.setSelectedIndex(0);
+ 	 							rabDD .setSelectedIndex(0);
+ 	 							rabDD .setSelectedIndex(0);
+ 	 						
  						}
  				 		
  						//dateMailedMonth.setText(rs.getString("date_mailed"));
  						String dateR  = rs.getString("date_mailed");
- 						if(dateR.equals("----------")) {
- 							dateRemandedM.setSelectedIndex(0);
- 							dateRemandedD .setSelectedIndex(0);
- 							dateRemandedY .setSelectedIndex(0);
- 						}else {
+ 						try {
 	 						java.sql.Date dateRDAT = java.sql.Date.valueOf(dateR);
 	 						cal11.setTime(dateRDAT);
 	 						int dateRDATM = cal11.get(Calendar.MONTH);
@@ -1775,21 +1786,23 @@ public class EditorFrame extends JFrame {
 	 				 		}
 	 						int dateRDATDY = cal11.get(Calendar.YEAR);
 	 						this_yearIndex = 0;
-	 				 		for(int year = 1905 ; year <= this_year_now  ; year++ ) {
+	 				 		for(int year = 1978 ; year <= this_year_now  ; year++ ) {
 	 				 			if(year == dateRDATDY) {
 	 				 				dateRemandedY .setSelectedIndex(this_yearIndex+1);
 	 				 			}
 	 				 			this_yearIndex++;
 	 				 		}
+ 						}catch(Exception a) {
+ 							
+ 	 							dateRemandedM.setSelectedIndex(0);
+ 	 							dateRemandedD .setSelectedIndex(0);
+ 	 							dateRemandedY .setSelectedIndex(0);
+ 	 						
  						}
  				 		
  						//dateForwardMonth.setText(rs.getString("date_forwarded"));
  						String dateMaileDDD  = rs.getString("date_forwarded");
- 						if(dateMaileDDD.equals("----------")) {
- 							dMailM.setSelectedIndex(0);
- 							dMailD .setSelectedIndex(0);
- 							dMailY .setSelectedIndex(0);
- 						}else {
+ 						try {
 	 						java.sql.Date dateMaileDDDAT = java.sql.Date.valueOf(dateMaileDDD);
 	 						cal14.setTime(dateMaileDDDAT);
 	 						int dateMaileDDDATM = cal14.get(Calendar.MONTH);
@@ -1806,12 +1819,18 @@ public class EditorFrame extends JFrame {
 	 				 		}
 	 						int dateMaileDDDATMY  = cal14.get(Calendar.YEAR);
 	 						this_yearIndex = 0;
-	 				 		for(int year = 1905 ; year <= this_year_now  ; year++ ) {
+	 				 		for(int year = 1978 ; year <= this_year_now  ; year++ ) {
 	 				 			if(year == dateMaileDDDATMY) {
 	 				 				dMailY.setSelectedIndex(this_yearIndex+1);
 	 				 			}
 	 				 			this_yearIndex++;
 	 				 		}
+ 						}catch(Exception as) {
+ 							
+ 	 							dMailM.setSelectedIndex(0);
+ 	 							dMailD .setSelectedIndex(0);
+ 	 							dMailY .setSelectedIndex(0);
+ 	 						
  						}
 	 				 		
  						courierAir.setText(rs.getString("courier_airbill_no"));
@@ -1819,11 +1838,7 @@ public class EditorFrame extends JFrame {
  						LA.setText(rs.getString("la"));
  						//AppeaDate.setText(rs.getString("app_date_or"));
  						String appealMM = rs.getString("app_date_or");
- 						if(appealMM.equals("----------")) {
- 							dAppealRM.setSelectedIndex(0);
- 							dAppealRD .setSelectedIndex(0);
- 							dAppealRY .setSelectedIndex(0);
- 						}else {
+ 						try {
 	 						java.sql.Date appealMMDat = java.sql.Date.valueOf(appealMM);
 	 						cal13.setTime(appealMMDat);
 	 						int appealMMDatM = cal13.get(Calendar.MONTH);
@@ -1840,23 +1855,25 @@ public class EditorFrame extends JFrame {
 	 				 		}
 	 						int appealMMDatY = cal13.get(Calendar.YEAR);
 	 						this_yearIndex = 0;
-	 				 		for(int year = 1905 ; year <= this_year_now  ; year++ ) {
+	 				 		for(int year = 1978 ; year <= this_year_now  ; year++ ) {
 	 				 			if(year == appealMMDatY) {
 	 				 				dAppealRY.setSelectedIndex(this_yearIndex+1);
 	 				 			}
 	 				 			this_yearIndex++;
 	 				 		}
+ 						}catch(Exception c) {
+ 							
+ 	 							dAppealRM.setSelectedIndex(0);
+ 	 							dAppealRD .setSelectedIndex(0);
+ 	 							dAppealRY .setSelectedIndex(0);
+ 	 						
  						}
  						
  						bondDate.setText(rs.getString("bond_date_or"));
  						
  						//dateEntryMonth.setText(rs.getString("date_entry_judg_issued"));
  						String EJIMonth = rs.getString("date_entry_judg_issued");
- 						if(EJIMonth.equals("----------")) {
- 							dEntryJIM.setSelectedIndex(0);
- 							dEntryJID .setSelectedIndex(0);
- 							dEntryJIY .setSelectedIndex(0);
- 						}else {
+ 						try {
 	 						java.sql.Date EJIMonthDAT = java.sql.Date.valueOf(EJIMonth);
 	 						cal10.setTime(EJIMonthDAT);
 	 						int EJIMonthDATM = cal10.get(Calendar.MONTH);
@@ -1873,12 +1890,18 @@ public class EditorFrame extends JFrame {
 	 				 		}
 	 						int ponentEJIMonthDATY = cal10.get(Calendar.YEAR);
 	 						this_yearIndex = 0;
-	 				 		for(int year = 1905 ; year <= this_year_now  ; year++ ) {
+	 				 		for(int year = 1978 ; year <= this_year_now  ; year++ ) {
 	 				 			if(year == ponentEJIMonthDATY) {
 	 				 				dEntryJIY .setSelectedIndex(this_yearIndex+1);
 	 				 			}
 	 				 			this_yearIndex++;
 	 				 		}
+ 						}catch(Exception a) {
+ 							
+ 	 							dEntryJIM.setSelectedIndex(0);
+ 	 							dEntryJID .setSelectedIndex(0);
+ 	 							dEntryJIY .setSelectedIndex(0);
+ 	 						
  						}
  						
  						if(rs.getString("case_type").equals("MAC No.")) {
@@ -1893,6 +1916,7 @@ public class EditorFrame extends JFrame {
  						 caseViewT = rs.getString("title");
  						 
  					  }
+ 					}
  			      	} catch (SQLException e1) {
  					// TODO Auto-generated catch block
  					e1.printStackTrace();
@@ -2176,31 +2200,31 @@ public class EditorFrame extends JFrame {
  						(!jValidateButton(dEntryJIM,dEntryJID,dEntryJIY)) && (!jValidateButton(dateRemandedM,dateRemandedD,dateRemandedY)) ) {
 		 				if(edit == 0) {
 		 					String c_type = comboBox.getSelectedItem().toString();
-		 					String dateNLRC =nlrcY.getSelectedItem().toString()+"-"+nlrcM.getSelectedItem().toString() + "-" + nlrcD.getSelectedItem().toString();
-		 					String dateApp = dateAppPoneneteY .getSelectedItem().toString()+"-"+dateAppPonenteM .getSelectedItem().toString() + "-" + dateAppPoneneteD .getSelectedItem().toString();
+		 					String dateNLRC =nlrcY.getSelectedItem().toString()+"-"+nlrcM.getSelectedIndex()+1 + "-" + nlrcD.getSelectedItem().toString();
+		 					String dateApp = dateAppPoneneteY .getSelectedItem().toString()+"-"+dateAppPonenteM.getSelectedIndex() + "-" + dateAppPoneneteD .getSelectedItem().toString();
 		 			
-		 					String dateMR = dateMRY1  .getSelectedItem().toString()+"-"+dateMRM1  .getSelectedItem().toString() + "-" + dateMRD1  .getSelectedItem().toString();
+		 					String dateMR = dateMRY1  .getSelectedItem().toString()+"-"+dateMRM1.getSelectedIndex() + "-" + dateMRD1  .getSelectedItem().toString();
 				 			
-		 					String dateOECC = OECCYear.getSelectedItem().toString()+"-"+OECCMonth.getSelectedItem().toString() + "-" + OECCDay.getSelectedItem().toString();
-		 					String ej = entryJY .getSelectedItem().toString()+"-"+entryJM .getSelectedItem().toString() + "-" + entryJD .getSelectedItem().toString();
+		 					String dateOECC = OECCYear.getSelectedItem().toString()+"-"+OECCMonth.getSelectedIndex()+1 + "-" + OECCDay.getSelectedItem().toString();
+		 					String ej = entryJY .getSelectedItem().toString()+"-"+entryJM.getSelectedIndex() + "-" + entryJD .getSelectedItem().toString();
 		 					
-		 					String dateComm = ponenteDY.getSelectedItem().toString()+"-"+ponenteDM.getSelectedItem().toString() + "-" + ponenteDD.getSelectedItem().toString();
-		 					String dateMRpro =rabDY  .getSelectedItem().toString()+"-"+rabDM  .getSelectedItem().toString() + "-" + rabDD .getSelectedItem().toString();
+		 					String dateComm = ponenteDY.getSelectedItem().toString()+"-"+ponenteDM.getSelectedIndex() + "-" + ponenteDD.getSelectedItem().toString();
+		 					String dateMRpro =rabDY  .getSelectedItem().toString()+"-"+rabDM.getSelectedIndex() + "-" + rabDD .getSelectedItem().toString();
 		 					
-		 					String dateMailed = dateRemandedY  .getSelectedItem().toString()+"-"+dateRemandedM  .getSelectedItem().toString() + "-" + dateRemandedD .getSelectedItem().toString();
+		 					String dateMailed = dateRemandedY  .getSelectedItem().toString()+"-"+dateRemandedM.getSelectedIndex() + "-" + dateRemandedD .getSelectedItem().toString();
 		 					
-		 					String dateForward = dMailY   .getSelectedItem().toString()+"-"+dMailM   .getSelectedItem().toString() + "-" + dMailD  .getSelectedItem().toString();
+		 					String dateForward = dMailY   .getSelectedItem().toString()+"-"+dMailM .getSelectedIndex() + "-" + dMailD  .getSelectedItem().toString();
 		 					
 		 					
-		 					String dateEntry = dEntryJIY  .getSelectedItem().toString()+"-"+dEntryJIM  .getSelectedItem().toString() + "-" + dEntryJID  .getSelectedItem().toString();
-		 					String AppeaDate = dAppealRY   .getSelectedItem().toString()+"-"+dAppealRM  .getSelectedItem().toString() + "-" + dAppealRD  .getSelectedItem().toString();
-		 					String date_prom = dPromY.getSelectedItem().toString()+"-"+dProM.getSelectedItem().toString() + "-" + dPromD  .getSelectedItem().toString();
-		 					String appp_date = appealfeeY.getSelectedItem().toString()+"-"+appealfeeM.getSelectedItem().toString() + "-" + appealfeeD  .getSelectedItem().toString();
-		 					String bndDM = bondDY.getSelectedItem().toString()+"-"+bondDM.getSelectedItem().toString() + "-" + bondDD  .getSelectedItem().toString();
+		 					String dateEntry = dEntryJIY  .getSelectedItem().toString()+"-"+dEntryJIM .getSelectedIndex() + "-" + dEntryJID  .getSelectedItem().toString();
+		 					String AppeaDate = dAppealRY   .getSelectedItem().toString()+"-"+dAppealRM .getSelectedIndex() + "-" + dAppealRD  .getSelectedItem().toString();
+		 					String date_prom = dPromY.getSelectedItem().toString()+"-"+dProM.getSelectedIndex() + "-" + dPromD  .getSelectedItem().toString();
+		 					String appp_date = appealfeeY.getSelectedItem().toString()+"-"+appealfeeM.getSelectedIndex() + "-" + appealfeeD  .getSelectedItem().toString();
+		 					String bndDM = bondDY.getSelectedItem().toString()+"-"+bondDM.getSelectedIndex() + "-" + bondDD  .getSelectedItem().toString();
 		 					
-		 					String bndm_new = bndy.getSelectedItem().toString()+"-"+bndm.getSelectedItem().toString() + "-" + bndd  .getSelectedItem().toString();
-		 					String dtmR2 = dateMRY2.getSelectedItem().toString()+"-"+dateMRM2.getSelectedItem().toString() + "-" + dateMRD2  .getSelectedItem().toString();
-		 					System.out.print(bndd.getSelectedIndex());
+		 					String bndm_new = bndy.getSelectedItem().toString()+"-"+bndm.getSelectedIndex() + "-" + bndd  .getSelectedItem().toString();
+		 					String dtmR2 = dateMRY2.getSelectedItem().toString()+"-"+dateMRM2.getSelectedIndex() + "-" + dateMRD2  .getSelectedItem().toString();
+		 				
 		 					
 		 					if(ofw.getSelectedItem().toString().equals("--")) {
 		 						ofw_type = " ";
@@ -2278,24 +2302,24 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
 			 				
 		 				}else {
 		 					String c_type = comboBox.getSelectedItem().toString();
-		 					String dateNLRC = nlrcY.getSelectedItem().toString()+"-"+nlrcM.getSelectedItem().toString() + "-" + nlrcD.getSelectedItem().toString();
-		 					String dateApp = dateAppPoneneteY .getSelectedItem().toString()+"-"+dateAppPonenteM .getSelectedItem().toString() + "-" + dateAppPoneneteD .getSelectedItem().toString();
-				 			String dateMR = dateMRY1  .getSelectedItem().toString()+"-"+dateMRM1  .getSelectedItem().toString() + "-" + dateMRD1  .getSelectedItem().toString();
+		 					String dateNLRC = nlrcY.getSelectedItem().toString()+"-"+nlrcM.getSelectedIndex()+1 + "-" + nlrcD.getSelectedItem().toString();
+		 					String dateApp = dateAppPoneneteY .getSelectedItem().toString()+"-"+dateAppPonenteM.getSelectedIndex() + "-" + dateAppPoneneteD .getSelectedItem().toString();
+				 			String dateMR = dateMRY1  .getSelectedItem().toString()+"-"+dateMRM1.getSelectedIndex() + "-" + dateMRD1  .getSelectedItem().toString();
 				 			
-		 					String dateOECC = OECCYear.getSelectedItem().toString()+"-"+OECCMonth.getSelectedItem().toString() + "-" + OECCDay.getSelectedItem().toString();
-		 					String dateComm = ponenteDY .getSelectedItem().toString()+"-"+ponenteDM .getSelectedItem().toString() + "-" + ponenteDD .getSelectedItem().toString();
-		 					String ej = entryJY .getSelectedItem().toString()+"-"+entryJM .getSelectedItem().toString() + "-" + entryJD .getSelectedItem().toString();
-		 					String dateMRpro = rabDY.getSelectedItem().toString()+"-"+rabDM.getSelectedItem().toString() + "-" + rabDD.getSelectedItem().toString();
+		 					String dateOECC = OECCYear.getSelectedItem().toString()+"-"+OECCMonth.getSelectedIndex()+1 + "-" + OECCDay.getSelectedItem().toString();
+		 					String dateComm = ponenteDY .getSelectedItem().toString()+"-"+ponenteDM .getSelectedIndex() + "-" + ponenteDD .getSelectedItem().toString();
+		 					String ej = entryJY .getSelectedItem().toString()+"-"+entryJM .getSelectedIndex() + "-" + entryJD .getSelectedItem().toString();
+		 					String dateMRpro = rabDY.getSelectedItem().toString()+"-"+rabDM.getSelectedIndex() + "-" + rabDD.getSelectedItem().toString();
 		 					
-		 					String dateMailed = dateRemandedY   .getSelectedItem().toString()+"-"+dateRemandedM   .getSelectedItem().toString() + "-" + dateRemandedD   .getSelectedItem().toString();
-		 					String AppeaDate = dAppealRY   .getSelectedItem().toString()+"-"+dAppealRM  .getSelectedItem().toString() + "-" + dAppealRD  .getSelectedItem().toString();
+		 					String dateMailed = dateRemandedY   .getSelectedItem().toString()+"-"+dateRemandedM.getSelectedIndex() + "-" + dateRemandedD   .getSelectedItem().toString();
+		 					String AppeaDate = dAppealRY   .getSelectedItem().toString()+"-"+dAppealRM.getSelectedIndex() + "-" + dAppealRD  .getSelectedItem().toString();
 		 					
-		 					String dateForward = dMailY  .getSelectedItem().toString()+"-"+dMailM   .getSelectedItem().toString() + "-" + dMailD  .getSelectedItem().toString();
+		 					String dateForward = dMailY  .getSelectedItem().toString()+"-"+dMailM .getSelectedIndex() + "-" + dMailD  .getSelectedItem().toString();
 		 					
-		 					String dateEntry = dEntryJIY  .getSelectedItem().toString()+"-"+dEntryJIM  .getSelectedItem().toString() + "-" + dEntryJID  .getSelectedItem().toString();
-		 					String date_prom = dPromY.getSelectedItem().toString()+"-"+dProM  .getSelectedItem().toString() + "-" + dPromD  .getSelectedItem().toString();
-		 					String appp_date = appealfeeY.getSelectedItem().toString()+"-"+appealfeeM.getSelectedItem().toString() + "-" + appealfeeD  .getSelectedItem().toString();
-		 					String bndDM = bondDY.getSelectedItem().toString()+"-"+bondDM.getSelectedItem().toString() + "-" + bondDD  .getSelectedItem().toString();
+		 					String dateEntry = dEntryJIY  .getSelectedItem().toString()+"-"+dEntryJIM .getSelectedIndex() + "-" + dEntryJID  .getSelectedItem().toString();
+		 					String date_prom = dPromY.getSelectedItem().toString()+"-"+dProM.getSelectedIndex() + "-" + dPromD  .getSelectedItem().toString();
+		 					String appp_date = appealfeeY.getSelectedItem().toString()+"-"+appealfeeM.getSelectedIndex() + "-" + appealfeeD  .getSelectedItem().toString();
+		 					String bndDM = bondDY.getSelectedItem().toString()+"-"+bondDM.getSelectedIndex() + "-" + bondDD  .getSelectedItem().toString();
 		 					
 		 					if(ofw.getSelectedItem().toString().equals("--")) {
 		 						ofw_type = " ";
@@ -2304,8 +2328,8 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
 		 					}
 		 					String full_cnum = comboBox.getSelectedItem().toString()+" "+textField_9.getText()+ofw_type;
 		 					String full_rab = rab_num.getSelectedItem().toString()+" "+tfCnum.getText();
-		 					String bndm_new = bndy.getSelectedItem().toString()+"-"+bndm.getSelectedItem().toString() + "-" + bndd  .getSelectedItem().toString();
-		 					String dtmR2 = dateMRY2.getSelectedItem().toString()+"-"+dateMRM2.getSelectedItem().toString() + "-" + dateMRD2  .getSelectedItem().toString();
+		 					String bndm_new = bndy.getSelectedItem().toString()+"-"+bndm.getSelectedIndex() + "-" + bndd  .getSelectedItem().toString();
+		 					String dtmR2 = dateMRY2.getSelectedItem().toString()+"-"+dateMRM2.getSelectedIndex() + "-" + dateMRD2  .getSelectedItem().toString();
 		 					
 		 					
 		 					int input = JOptionPane.showConfirmDialog(null, "Save Changes?","Confirm",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
@@ -2494,7 +2518,7 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
  		}
  		int year_now = Calendar.getInstance().get(Calendar.YEAR);
  		int yearIndex = 0;
- 		for(int year = 1905 ; year <= year_now  ; year++ ) {
+ 		for(int year = 1978 ; year <= year_now  ; year++ ) {
  			if(year == year_now) {
  			}
  			yearIndex++;
@@ -2511,7 +2535,7 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
  			
  		}
  		yearIndex = 0;
- 		for(int year = 1905 ; year <= year_now  ; year++ ) {
+ 		for(int year = 1978 ; year <= year_now  ; year++ ) {
  			
  			if(year == year_now) {
  				
@@ -2526,7 +2550,7 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
  			}	
  		}
  		yearIndex = 0;
- 		for(int year = 1905 ; year <= year_now  ; year++ ) {
+ 		for(int year = 1978 ; year <= year_now  ; year++ ) {
  			
  			if(year == year_now) {
  
@@ -2543,7 +2567,7 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
  			}
  		}
  		yearIndex = 0;
- 		for(int year = 1905 ; year <= year_now  ; year++ ) {
+ 		for(int year = 1978 ; year <= year_now  ; year++ ) {
  			
  			if(year == year_now) {
  				
@@ -2560,7 +2584,7 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
  			}	
  		}
  		yearIndex = 0;
- 		for(int year = 1905 ; year <= year_now  ; year++ ) {
+ 		for(int year = 1978 ; year <= year_now  ; year++ ) {
  			
  			if(year == year_now) {
  			}
@@ -2578,7 +2602,7 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
  		}
 
  		yearIndex = 0;
- 		for(int year = 1905 ; year <= year_now  ; year++ ) {
+ 		for(int year = 1978 ; year <= year_now  ; year++ ) {
  			
  			if(year == year_now) {
  			
@@ -2597,7 +2621,7 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
  			}	
  		}
  		yearIndex = 0;
- 		for(int year = 1905 ; year <= year_now  ; year++ ) {
+ 		for(int year = 1978 ; year <= year_now  ; year++ ) {
  			
  			if(year == year_now) {
  				
@@ -2614,7 +2638,7 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
  			}	
  		}
  		yearIndex = 0;
- 		for(int year = 1905 ; year <= year_now  ; year++ ) {
+ 		for(int year = 1978 ; year <= year_now  ; year++ ) {
  			
  			if(year == year_now) {
  			
@@ -2711,8 +2735,8 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
 	 		rab_num.addItem("SRAB");
 	 		
 	 		OECCMonth = new JComboBox();
-	 		for(int month = 1 ; month <= 12 ; month++ ) {
-	 			OECCMonth.addItem(String.valueOf(month));
+	 		for(int month = 0 ; month <= 11 ; month++ ) {
+	 			OECCMonth.addItem(monthList[month]);
 	 		}
 	 		OECCMonth.setSelectedIndex(month_now);
 	 		
@@ -2727,7 +2751,7 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
 	 		
 	 		OECCYear = new JComboBox();
 	 		yearIndex = 0;
-	 		for(int year = 1905 ; year <= year_now  ; year++ ) {
+	 		for(int year = 1978 ; year <= year_now  ; year++ ) {
 	 			OECCYear.addItem(String.valueOf(year));
 	 			if(year == year_now) {
 	 				OECCYear.setSelectedIndex(yearIndex);
@@ -2998,14 +3022,15 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
 	 		label_61.setFont(new Font("Arial", Font.BOLD, 15));
 	 		
 	 		appelant = new JComboBox();
+	 		appelant.addItem("------");
 	 		appelant.addItem("Complainant");
 	 		appelant.addItem("Respondent");
 	 		appelant.addItem("Both");
 	 		appelant.addItem("Petitioner");
 	 		
 	 		nlrcM = new JComboBox();
-	 		for(int month = 1 ; month <= 12 ; month++ ) {
-	 			nlrcM.addItem(String.valueOf(month));
+	 		for(int month = 0 ; month <= 11 ; month++ ) {
+	 			nlrcM.addItem(monthList[month]);
 	 		}
 	 		
 	 		nlrcD = new JComboBox();
@@ -3014,7 +3039,7 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
 	 		}
 	 		
 	 		nlrcY = new JComboBox();
-	 		for(int year = 1905 ; year <= year_now  ; year++ ) {
+	 		for(int year = 1978 ; year <= year_now  ; year++ ) {
 	 			nlrcY.addItem(String.valueOf(year));
 	 			yearIndex++;
 	 		}
@@ -3059,8 +3084,8 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
 	 		
 	 		rabDM = new JComboBox();
 	 		rabDM.addItem("--");
-	 		for(int month = 1 ; month <= 12 ; month++ ) {
-	 			rabDM.addItem(String.valueOf(month));
+	 		for(int month = 0 ; month <= 11 ; month++ ) {
+	 			rabDM.addItem(monthList[month]);
 	 		}
 	 		rabDM.addActionListener(new ActionListener() {
 	 			public void actionPerformed(ActionEvent arg0) {
@@ -3086,7 +3111,7 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
 
 	 		rabDY = new JComboBox();
 	 		rabDY.addItem("----");
-	 		for(int year = 1905 ; year <= year_now  ; year++ ) {
+	 		for(int year = 1978 ; year <= year_now  ; year++ ) {
 	 			rabDY.addItem(String.valueOf(year));
 
 	 		}
@@ -3101,7 +3126,7 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
 	 		
 	 		dPromY = new JComboBox();
 	 		dPromY.addItem("----");
-	 		for(int year = 1905 ; year <= year_now  ; year++ ) {
+	 		for(int year = 1978 ; year <= year_now  ; year++ ) {
 	 			dPromY.addItem(String.valueOf(year));
 
 	 		}
@@ -3129,8 +3154,8 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
 	 		});
 	 		dProM = new JComboBox();
 	 		dProM.addItem("--");
-	 		for(int month = 1 ; month <= 12 ; month++ ) {
-	 			dProM.addItem(String.valueOf(month));
+	 		for(int month = 0 ; month <= 11 ; month++ ) {
+	 			dProM.addItem(monthList[month]);
 	 		}
 	 		dProM.addActionListener(new ActionListener() {
 	 			public void actionPerformed(ActionEvent arg0) {
@@ -3141,9 +3166,9 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
 	 			}
 	 		});
 	 		
-	 		JLabel label_46 = new JLabel("Date Promulagated:");
-	 		label_46.setForeground(Color.WHITE);
-	 		label_46.setFont(new Font("Arial", Font.BOLD, 12));
+	 		JLabel lblDatePromulgated = new JLabel("Date Promulgated:");
+	 		lblDatePromulgated.setForeground(Color.WHITE);
+	 		lblDatePromulgated.setFont(new Font("Arial", Font.BOLD, 12));
 	 		
 	 		textField_7 = new JTextField()  {
 			@Override protected void paintComponent(Graphics g) {
@@ -3169,8 +3194,8 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
 	 		
 	 		dMailM = new JComboBox();
 	 		dMailM.addItem("--");
-	 		for(int month = 1 ; month <= 12 ; month++ ) {
-	 			dMailM.addItem(String.valueOf(month));
+	 		for(int month = 0 ; month <= 11 ; month++ ) {
+	 			dMailM.addItem(monthList[month]);
 	 		}
 	 		dMailM.addActionListener(new ActionListener() {
 	 			public void actionPerformed(ActionEvent arg0) {
@@ -3197,7 +3222,7 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
 	 		
 	 		dMailY = new JComboBox();
 	 		dMailY.addItem("----");
-	 		for(int year = 1905 ; year <= year_now  ; year++ ) {
+	 		for(int year = 1978 ; year <= year_now  ; year++ ) {
 	 			dMailY.addItem(String.valueOf(year));
 
 	 		}
@@ -3216,8 +3241,8 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
 	 		
 	 		dAppealRM = new JComboBox();
 	 		dAppealRM.addItem("--");
-	 		for(int month = 1 ; month <= 12 ; month++ ) {
-	 			dAppealRM.addItem(String.valueOf(month));
+	 		for(int month = 0 ; month <= 11 ; month++ ) {
+	 			dAppealRM.addItem(monthList[month]);
 	 		}
 	 		dAppealRM.addActionListener(new ActionListener() {
 	 			public void actionPerformed(ActionEvent arg0) {
@@ -3247,7 +3272,7 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
 	 		
 	 		dAppealRY = new JComboBox();
 	 		dAppealRY.addItem("----");
-	 		for(int year = 1905 ; year <= year_now  ; year++ ) {
+	 		for(int year = 1978 ; year <= year_now  ; year++ ) {
 	 			dAppealRY.addItem(String.valueOf(year));
 
 	 		}
@@ -3304,8 +3329,8 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
 	 		
 	 		appealfeeM = new JComboBox();
 	 		appealfeeM.addItem("--");
-	 		for(int month = 1 ; month <= 12 ; month++ ) {
-	 			appealfeeM.addItem(String.valueOf(month));
+	 		for(int month = 0 ; month <= 11 ; month++ ) {
+	 			appealfeeM.addItem(monthList[month]);
 	 		}
 	 		appealfeeM.addActionListener(new ActionListener() {
 	 			public void actionPerformed(ActionEvent arg0) {
@@ -3332,7 +3357,7 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
 	 		
 	 		appealfeeY = new JComboBox();
 	 		appealfeeY.addItem("----");
-	 		for(int year = 1905 ; year <= year_now  ; year++ ) {
+	 		for(int year = 1978 ; year <= year_now  ; year++ ) {
 	 			appealfeeY.addItem(String.valueOf(year));
 
 	 		}
@@ -3390,8 +3415,8 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
 	 		
 	 		bondDM = new JComboBox();
 	 		bondDM.addItem("--");
-	 		for(int month = 1 ; month <= 12 ; month++ ) {
-	 			bondDM.addItem(String.valueOf(month));
+	 		for(int month = 0 ; month <= 11 ; month++ ) {
+	 			bondDM.addItem(monthList[month]);
 	 		}
 	 		bondDM.addActionListener(new ActionListener() {
 	 			public void actionPerformed(ActionEvent arg0) {
@@ -3405,7 +3430,7 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
 	 		
 	 		bondDY = new JComboBox();
 	 		bondDY.addItem("----");
-	 		for(int year = 1905 ; year <= year_now  ; year++ ) {
+	 		for(int year = 1978 ; year <= year_now  ; year++ ) {
 	 			bondDY.addItem(String.valueOf(year));
 
 	 		}
@@ -3464,8 +3489,8 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
 	 		
 	 		bndm = new JComboBox();
 	 		bndm.addItem("--");
-	 		for(int month = 1 ; month <= 12 ; month++ ) {
-	 			bndm.addItem(String.valueOf(month));
+	 		for(int month = 0 ; month <= 11 ; month++ ) {
+	 			bndm.addItem(monthList[month]);
 	 		}
 	 		bndm.addActionListener(new ActionListener() {
 	 			public void actionPerformed(ActionEvent arg0) {
@@ -3492,7 +3517,7 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
 	 		
 	 		bndy = new JComboBox();
 	 		bndy.addItem("----");
-	 		for(int year = 1905 ; year <= year_now  ; year++ ) {
+	 		for(int year = 1978 ; year <= year_now  ; year++ ) {
 	 			bndy.addItem(String.valueOf(year));
 
 	 		}
@@ -3540,8 +3565,8 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
 	 		
 	 		ponenteDM = new JComboBox();
 	 		ponenteDM.addItem("--");
-	 		for(int month = 1 ; month <= 12 ; month++ ) {
-	 			ponenteDM.addItem(String.valueOf(month));
+	 		for(int month = 0 ; month <= 11 ; month++ ) {
+	 			ponenteDM.addItem(monthList[month]);
 	 		}
 	 		ponenteDM.addActionListener(new ActionListener() {
 	 			public void actionPerformed(ActionEvent arg0) {
@@ -3576,8 +3601,8 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
 	 		
 	 		dateAppPonenteM = new JComboBox();
 	 		dateAppPonenteM.addItem("--");
-	 		for(int month = 1 ; month <= 12 ; month++ ) {
-	 			dateAppPonenteM.addItem(String.valueOf(month));
+	 		for(int month = 0 ; month <= 11 ; month++ ) {
+	 			dateAppPonenteM.addItem(monthList[month]);
 	 		}
 	 		dateAppPonenteM.addActionListener(new ActionListener() {
 	 			public void actionPerformed(ActionEvent arg0) {
@@ -3604,7 +3629,7 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
 	 		
 	 		dateAppPoneneteY = new JComboBox();
 	 		dateAppPoneneteY.addItem("----");
-	 		for(int year = 1905 ; year <= year_now  ; year++ ) {
+	 		for(int year = 1978 ; year <= year_now  ; year++ ) {
 	 			dateAppPoneneteY.addItem(String.valueOf(year));
 
 	 		}
@@ -3627,8 +3652,8 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
 	 		
 	 		dateMRM1 = new JComboBox();
 	 		dateMRM1.addItem("--");
-	 		for(int month = 1 ; month <= 12 ; month++ ) {
-	 			dateMRM1.addItem(String.valueOf(month));
+	 		for(int month = 0 ; month <= 11 ; month++ ) {
+	 			dateMRM1.addItem(monthList[month]);
 	 		}
 	 		dateMRM1.addActionListener(new ActionListener() {
 	 			public void actionPerformed(ActionEvent arg0) {
@@ -3656,7 +3681,7 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
 	 		
 	 		dateMRY1 = new JComboBox();
 	 		dateMRY1.addItem("----");
-	 		for(int year = 1905 ; year <= year_now  ; year++ ) {
+	 		for(int year = 1978 ; year <= year_now  ; year++ ) {
 	 			dateMRY1.addItem(String.valueOf(year));
 
 	 		}
@@ -3671,7 +3696,7 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
 	 		
 	 		ponenteDY = new JComboBox();
 	 		ponenteDY.addItem("----");
-	 		for(int year = 1905 ; year <= year_now  ; year++ ) {
+	 		for(int year = 1978 ; year <= year_now  ; year++ ) {
 	 			ponenteDY.addItem(String.valueOf(year));
 	 		}
 	 		ponenteDY.addActionListener(new ActionListener() {
@@ -3718,8 +3743,8 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
 	 		
 	 		dateMRM2 = new JComboBox();
 	 		dateMRM2.addItem("--");
-	 		for(int month = 1 ; month <= 12 ; month++ ) {
-	 			dateMRM2.addItem(String.valueOf(month));
+	 		for(int month = 0 ; month <= 11 ; month++ ) {
+	 			dateMRM2.addItem(monthList[month]);
 	 		}
 	 		dateMRM2.addActionListener(new ActionListener() {
 	 			public void actionPerformed(ActionEvent arg0) {
@@ -3747,7 +3772,7 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
 	 		
 	 		dateMRY2 = new JComboBox();
 	 		dateMRY2.addItem("----");
-	 		for(int year = 1905 ; year <= year_now  ; year++ ) {
+	 		for(int year = 1978 ; year <= year_now  ; year++ ) {
 	 			dateMRY2.addItem(String.valueOf(year));
 	 		}
 	 		dateMRY2.addActionListener(new ActionListener() {
@@ -3793,8 +3818,8 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
 	 		
 	 		entryJM = new JComboBox();
 	 		entryJM.addItem("--");
-	 		for(int month = 1 ; month <= 12 ; month++ ) {
-	 			entryJM.addItem(String.valueOf(month));
+	 		for(int month = 0 ; month <= 11 ; month++ ) {
+	 			entryJM.addItem(monthList[month]);
 	 		}
 	 		entryJM.addActionListener(new ActionListener() {
 	 			public void actionPerformed(ActionEvent arg0) {
@@ -3823,7 +3848,7 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
 	 		
 	 		entryJY = new JComboBox();
 	 		entryJY.addItem("----");
-	 		for(int year = 1905 ; year <= year_now  ; year++ ) {
+	 		for(int year = 1978 ; year <= year_now  ; year++ ) {
 	 			entryJY.addItem(String.valueOf(year));
 
 	 		}
@@ -3857,8 +3882,8 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
 	 		
 	 	 	dEntryJIM = new JComboBox();
 	 	 	dEntryJIM.addItem("--");
-	 	 	for(int month = 1 ; month <= 12 ; month++ ) {
-	 	 		dEntryJIM.addItem(String.valueOf(month));
+	 	 	for(int month = 0 ; month <= 11 ; month++ ) {
+	 	 		dEntryJIM.addItem(monthList[month]);
 	 	 	}
 	 	 	dEntryJIM.addActionListener(new ActionListener() {
 	 			public void actionPerformed(ActionEvent arg0) {
@@ -3872,7 +3897,7 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
 	 		
 	 		dEntryJIY = new JComboBox();
 	 		dEntryJIY.addItem("----");
-	 		for(int year = 1905 ; year <= year_now  ; year++ ) {
+	 		for(int year = 1978 ; year <= year_now  ; year++ ) {
 	 			dEntryJIY.addItem(String.valueOf(year));
 
 	 		}
@@ -3891,8 +3916,8 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
 	 		
 	 		dateRemandedM = new JComboBox();
 	 		dateRemandedM.addItem("--");
-	 		for(int month = 1 ; month <= 12 ; month++ ) {
-	 			dateRemandedM.addItem(String.valueOf(month));
+	 		for(int month = 0 ; month <= 11 ; month++ ) {
+	 			dateRemandedM.addItem(monthList[month]);
 	 	 	}
 	 		dateRemandedM.addActionListener(new ActionListener() {
 	 			public void actionPerformed(ActionEvent arg0) {
@@ -3921,7 +3946,7 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
 	 		
 	 		dateRemandedY = new JComboBox();
 	 		dateRemandedY.addItem("----");
-	 		for(int year = 1905 ; year <= year_now  ; year++ ) {
+	 		for(int year = 1978 ; year <= year_now  ; year++ ) {
 	 			dateRemandedY.addItem(String.valueOf(year));
 
 	 		}
@@ -4284,24 +4309,6 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
 	 					.addGap(382)
 	 					.addComponent(label_23, GroupLayout.PREFERRED_SIZE, 176, GroupLayout.PREFERRED_SIZE))
 	 				.addGroup(gl_panel_21.createSequentialGroup()
-	 					.addGap(23)
-	 					.addComponent(ammCurrency, GroupLayout.PREFERRED_SIZE, 58, GroupLayout.PREFERRED_SIZE)
-	 					.addGap(1)
-	 					.addComponent(ammOfAward, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE)
-	 					.addGap(318)
-	 					.addComponent(dateAppPonenteM, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
-	 					.addGap(10)
-	 					.addComponent(dateAppPoneneteD, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
-	 					.addGap(10)
-	 					.addComponent(dateAppPoneneteY, GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE)
-	 					.addGap(10)
-	 					.addComponent(label_74, GroupLayout.PREFERRED_SIZE, 82, GroupLayout.PREFERRED_SIZE))
-	 				.addGroup(gl_panel_21.createSequentialGroup()
-	 					.addGap(32)
-	 					.addComponent(label_24, GroupLayout.PREFERRED_SIZE, 137, GroupLayout.PREFERRED_SIZE)
-	 					.addGap(368)
-	 					.addComponent(label_95, GroupLayout.PREFERRED_SIZE, 176, GroupLayout.PREFERRED_SIZE))
-	 				.addGroup(gl_panel_21.createSequentialGroup()
 	 					.addGap(22)
 	 					.addGroup(gl_panel_21.createParallelGroup(Alignment.LEADING)
 	 						.addGroup(gl_panel_21.createSequentialGroup()
@@ -4312,7 +4319,7 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
 	 							.addComponent(rabDY, GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE))
 	 						.addGroup(gl_panel_21.createSequentialGroup()
 	 							.addGap(10)
-	 							.addComponent(label_46, GroupLayout.PREFERRED_SIZE, 137, GroupLayout.PREFERRED_SIZE)))
+	 							.addComponent(lblDatePromulgated, GroupLayout.PREFERRED_SIZE, 137, GroupLayout.PREFERRED_SIZE)))
 	 					.addGap(4)
 	 					.addComponent(label_56, GroupLayout.PREFERRED_SIZE, 82, GroupLayout.PREFERRED_SIZE)
 	 					.addGap(161)
@@ -4418,9 +4425,9 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
 	 							.addGap(10)
 	 							.addComponent(label_28, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE)
 	 							.addGap(15)
-	 							.addComponent(comboBox_6, GroupLayout.PREFERRED_SIZE, 58, GroupLayout.PREFERRED_SIZE)
-	 							.addGap(2)
-	 							.addComponent(appealFee, GroupLayout.PREFERRED_SIZE, 178, GroupLayout.PREFERRED_SIZE))
+	 							.addComponent(comboBox_6, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE)
+	 							.addPreferredGap(ComponentPlacement.RELATED)
+	 							.addComponent(appealFee, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE))
 	 						.addGroup(gl_panel_21.createSequentialGroup()
 	 							.addGap(10)
 	 							.addComponent(label_30, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE)
@@ -4544,6 +4551,25 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
 	 				.addGroup(gl_panel_21.createSequentialGroup()
 	 					.addGap(516)
 	 					.addComponent(panel_23, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+	 				.addGroup(gl_panel_21.createSequentialGroup()
+	 					.addGap(22)
+	 					.addGroup(gl_panel_21.createParallelGroup(Alignment.LEADING)
+	 						.addGroup(gl_panel_21.createSequentialGroup()
+	 							.addComponent(ammCurrency, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE)
+	 							.addGap(1)
+	 							.addComponent(ammOfAward, GroupLayout.PREFERRED_SIZE, 156, GroupLayout.PREFERRED_SIZE)
+	 							.addGap(269)
+	 							.addComponent(dateAppPonenteM, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
+	 							.addGap(10)
+	 							.addComponent(dateAppPoneneteD, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
+	 							.addGap(10)
+	 							.addComponent(dateAppPoneneteY, GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE)
+	 							.addGap(10)
+	 							.addComponent(label_74, GroupLayout.PREFERRED_SIZE, 82, GroupLayout.PREFERRED_SIZE))
+	 						.addGroup(gl_panel_21.createSequentialGroup()
+	 							.addComponent(label_24, GroupLayout.PREFERRED_SIZE, 137, GroupLayout.PREFERRED_SIZE)
+	 							.addGap(368)
+	 							.addComponent(label_95, GroupLayout.PREFERRED_SIZE, 176, GroupLayout.PREFERRED_SIZE))))
 	 		);
 	 		gl_panel_21.setVerticalGroup(
 	 			gl_panel_21.createParallelGroup(Alignment.LEADING)
@@ -4619,12 +4645,13 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
 	 						.addComponent(label_18, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
 	 						.addComponent(label_23, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE))
 	 					.addGroup(gl_panel_21.createParallelGroup(Alignment.LEADING)
-	 						.addComponent(ammCurrency, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-	 						.addComponent(ammOfAward, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 	 						.addComponent(dateAppPonenteM, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 	 						.addComponent(dateAppPoneneteD, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 	 						.addComponent(dateAppPoneneteY, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-	 						.addComponent(label_74, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE))
+	 						.addComponent(label_74, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
+	 						.addGroup(gl_panel_21.createParallelGroup(Alignment.BASELINE)
+	 							.addComponent(ammOfAward, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+	 							.addComponent(ammCurrency, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
 	 					.addGap(7)
 	 					.addGroup(gl_panel_21.createParallelGroup(Alignment.LEADING)
 	 						.addComponent(label_24, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
@@ -4637,7 +4664,7 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
 	 								.addComponent(rabDD, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 	 								.addComponent(rabDY, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 	 							.addGap(22)
-	 							.addComponent(label_46, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE))
+	 							.addComponent(lblDatePromulgated, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE))
 	 						.addComponent(label_56, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
 	 						.addComponent(scrollPane_9, GroupLayout.PREFERRED_SIZE, 62, GroupLayout.PREFERRED_SIZE))
 	 					.addGap(6)
@@ -5539,7 +5566,7 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
 				btnHome.setBackground(Color.decode("#374b5e"));
 				panel_3.setBackground(new Color(55, 75, 94));
 				
-		
+			
 				
 				ResultSet rs = DBQuery.getEmployee(Login.getAccountID());
 				try {
@@ -6020,8 +6047,8 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
 		
 		comboBox_1 = new JComboBox();
 		comboBox_1.addItem("MM");
-		for(int month = 1 ; month <= 12 ; month++ ) {
-			comboBox_1.addItem(String.valueOf(month));
+		for(int month = 0 ; month <= 11 ; month++ ) {
+			comboBox_1.addItem(monthList[month]);
  		}
 		
 	
@@ -6071,7 +6098,7 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
  		
  		comboBox_2 = new JComboBox();
  		comboBox_2.addItem("YYYY");
- 		for(int year = 1905 ; year <= year_now  ; year++ ) {
+ 		for(int year = 1978 ; year <= year_now  ; year++ ) {
  			comboBox_2.addItem(String.valueOf(year));
  		}
 		comboBox_2.addActionListener(new ActionListener() {
@@ -6487,195 +6514,192 @@ table_3.setFocusable(false);
 					int oecc_year = cal2.get(Calendar.YEAR);
 					
 					String date1 = rs.getString("date_prom");
+					System.out.print(date1);
 					Calendar cal1 = Calendar.getInstance();
-					if(date1.equals("----------")) {
-						dapDate=" ";
-					}else {
+					try {
 						java.sql.Date dateDat1 = java.sql.Date.valueOf(date1);
 						cal1.setTime(dateDat1);
 						int date_prmM = cal1.get(Calendar.MONTH);
 						int date_prmD = cal1.get(Calendar.DAY_OF_MONTH);
 						int date_prmY = cal1.get(Calendar.YEAR);
 						dapDate = monthList[date_prmM]+" "+date_prmD+", "+date_prmY;
+					}catch(Exception e){
+						dapDate = " ";
 					}
 					
 					String rabDesM = rs.getString("date_mr_prom");
 					String mrabDesM="";
 					Calendar cal3 = Calendar.getInstance();
-					if(rabDesM.equals("----------")) {
-						mrabDesM=" ";
-					}else {
+					try {
 						java.sql.Date dateDat3 = java.sql.Date.valueOf(rabDesM);
 						cal3.setTime(dateDat3);
 						int date_pM = cal3.get(Calendar.MONTH);
 						int date_pD = cal3.get(Calendar.DAY_OF_MONTH);
 						int date_pY = cal3.get(Calendar.YEAR);
 						mrabDesM=monthList[date_pM]+" "+date_pD+", "+date_pY;
+					}catch(Exception e){
+						mrabDesM = " ";
 					}
 					
 					String date4 = rs.getString("date_forwarded");
 					String date_4="";
 					Calendar cal4 = Calendar.getInstance();
-					if(date4.equals("----------")) {
-						date_4=" ";
-					}else {
+					try {
 						java.sql.Date dateDat4 = java.sql.Date.valueOf(date4);
 						cal4.setTime(dateDat4);
 						int date_pM = cal4.get(Calendar.MONTH);
 						int date_pD = cal4.get(Calendar.DAY_OF_MONTH);
 						int date_pY = cal4.get(Calendar.YEAR);
 						date_4=monthList[date_pM]+" "+date_pD+", "+date_pY;
+					}catch(Exception e) {
+						date_4 = " ";
 					}
-					
 					String date5 = rs.getString("app_date_or");
 					String date_5="";
 					Calendar cal5 = Calendar.getInstance();
-					if(date5.equals("----------")) {
-						date_5=" ";
-					}else {
+					try {
 						java.sql.Date dateDat5 = java.sql.Date.valueOf(date5);
 						cal5.setTime(dateDat5);
 						int date_pM = cal5.get(Calendar.MONTH);
 						int date_pD = cal5.get(Calendar.DAY_OF_MONTH);
 						int date_pY = cal5.get(Calendar.YEAR);
 						date_5=monthList[date_pM]+" "+date_pD+", "+date_pY;
+					}catch(Exception e) {
+						date_5 = " ";
 					}
-					
 					String date6 = rs.getString("ap_date");
 					String date_6="";
 					Calendar cal6 = Calendar.getInstance();
-					if(date6.equals("----------")) {
-						date_6=" ";
-					}else {
+					try {
 						java.sql.Date dateDat6 = java.sql.Date.valueOf(date6);
 						cal6.setTime(dateDat6);
 						int date_pM = cal6.get(Calendar.MONTH);
 						int date_pD = cal6.get(Calendar.DAY_OF_MONTH);
 						int date_pY = cal6.get(Calendar.YEAR);
 						date_6=monthList[date_pM]+" "+date_pD+", "+date_pY;
+					}catch(Exception e) {
+						date_6 = " ";
 					}
-					
 					String date7 = rs.getString("date_bnd_new");
 					String date_7="";
 					Calendar cal7 = Calendar.getInstance();
-					if(date7.equals("----------")) {
-						date_7=" ";
-					}else {
+					try {
 						java.sql.Date dateDat7 = java.sql.Date.valueOf(date7);
 						cal7.setTime(dateDat7);
 						int date_pM = cal7.get(Calendar.MONTH);
 						int date_pD = cal7.get(Calendar.DAY_OF_MONTH);
 						int date_pY = cal7.get(Calendar.YEAR);
 						date_7=monthList[date_pM]+" "+date_pD+", "+date_pY;
+					}catch(Exception e) {
+						date_7 = " ";
 					}
 					
 					String date8 = rs.getString("bndm_new");
 					String date_8="";
 					Calendar cal8 = Calendar.getInstance();
-					if(date8.equals("----------")) {
-						date_8=" ";
-					}else {
+					try {
 						java.sql.Date dateDat8 = java.sql.Date.valueOf(date8);
 						cal8.setTime(dateDat8);
 						int date_pM = cal8.get(Calendar.MONTH);
 						int date_pD = cal8.get(Calendar.DAY_OF_MONTH);
 						int date_pY = cal8.get(Calendar.YEAR);
 						date_8=monthList[date_pM]+" "+date_pD+", "+date_pY;
+					}catch(Exception e) {
+						date_8 = " ";
 					}
 					String date9 = rs.getString("Date_rec_com");
 					String date_9="";
 					Calendar cal9 = Calendar.getInstance();
-					if(date9.equals("----------")) {
-						date_9=" ";
-					}else {
+					try {
 						java.sql.Date dateDat9 = java.sql.Date.valueOf(date9);
 						cal9.setTime(dateDat9);
 						int date_pM = cal9.get(Calendar.MONTH);
 						int date_pD = cal9.get(Calendar.DAY_OF_MONTH);
 						int date_pY = cal9.get(Calendar.YEAR);
 						date_9=monthList[date_pM]+" "+date_pD+", "+date_pY;
+					}catch(Exception e) {
+						date_9 = " ";
 					}
 					
 					String date10 = rs.getString("Date_app_prom");
 					String date_10="";
 					Calendar cal10 = Calendar.getInstance();
-					if(date10.equals("----------")) {
-						date_10=" ";
-					}else {
+					try {
 						java.sql.Date dateDat10 = java.sql.Date.valueOf(date10);
 						cal10.setTime(dateDat10);
 						int date_pM = cal10.get(Calendar.MONTH);
 						int date_pD = cal10.get(Calendar.DAY_OF_MONTH);
 						int date_pY = cal10.get(Calendar.YEAR);
 						date_10=monthList[date_pM]+" "+date_pD+", "+date_pY;
+					}catch(Exception e) {
+						date_10="";
 					}
-					
 					String date11 = rs.getString("Date_mr_filed");
 					String date_11="";
 					Calendar cal11 = Calendar.getInstance();
-					if(date11.equals("----------")) {
-						date_11=" ";
-					}else {
+					try {
 						java.sql.Date dateDat11 = java.sql.Date.valueOf(date11);
 						cal11.setTime(dateDat11);
 						int date_pM = cal11.get(Calendar.MONTH);
 						int date_pD = cal11.get(Calendar.DAY_OF_MONTH);
 						int date_pY = cal11.get(Calendar.YEAR);
 						date_11=monthList[date_pM]+" "+date_pD+", "+date_pY;
+					}catch(Exception e) {
+						date_11="";
 					}
 					String date12 = rs.getString("Date_mr_filed2");
 					String date_12="";
 					Calendar cal12 = Calendar.getInstance();
-					if(date12.equals("----------")) {
-						date_12=" ";
-					}else {
+					try {
 						java.sql.Date dateDat12 = java.sql.Date.valueOf(date12);
 						cal12.setTime(dateDat12);
 						int date_pM = cal12.get(Calendar.MONTH);
 						int date_pD = cal12.get(Calendar.DAY_OF_MONTH);
 						int date_pY = cal12.get(Calendar.YEAR);
 						date_12=monthList[date_pM]+" "+date_pD+", "+date_pY;
+					}catch(Exception e) {
+						date_12="";
 					}
 					String date13 = rs.getString("entry_judgment");
 					String date_13="";
 					Calendar cal13 = Calendar.getInstance();
-					if(date13.equals("----------")) {
-						date_13=" ";
-					}else {
+					try {
 						java.sql.Date dateDat13 = java.sql.Date.valueOf(date13);
 						cal13.setTime(dateDat13);
 						int date_pM = cal13.get(Calendar.MONTH);
 						int date_pD = cal13.get(Calendar.DAY_OF_MONTH);
 						int date_pY = cal13.get(Calendar.YEAR);
 						date_13=monthList[date_pM]+" "+date_pD+", "+date_pY;
+					}catch(Exception e) {
+						date_13="";
 					}
 					//
 					String date14 = rs.getString("date_entry_judg_issued");
 					String date_14="";
 					Calendar cal14 = Calendar.getInstance();
-					if(date14.equals("----------")) {
-						date_14=" ";
-					}else {
+					try {
 						java.sql.Date dateDat14 = java.sql.Date.valueOf(date14);
 						cal14.setTime(dateDat14);
 						int date_pM = cal14.get(Calendar.MONTH);
 						int date_pD = cal14.get(Calendar.DAY_OF_MONTH);
 						int date_pY = cal14.get(Calendar.YEAR);
 						date_14=monthList[date_pM]+" "+date_pD+", "+date_pY;
+					}catch(Exception e) {
+						date_14="";
 					}
 					
 					String date15 = rs.getString("date_mailed");
 					String date_15="";
 					Calendar cal15 = Calendar.getInstance();
-					if(date15.equals("----------")) {
-						date_15=" ";
-					}else {
+					try {
 						java.sql.Date dateDat15 = java.sql.Date.valueOf(date15);
 						cal15.setTime(dateDat15);
 						int date_pM = cal15.get(Calendar.MONTH);
 						int date_pD = cal15.get(Calendar.DAY_OF_MONTH);
 						int date_pY = cal15.get(Calendar.YEAR);
 						date_15=monthList[date_pM]+" "+date_pD+", "+date_pY;
+					}catch(Exception e) {
+						date_15="";
 					}
 					
 					
@@ -6683,15 +6707,15 @@ table_3.setFocusable(false);
 					String date16 = rs.getString("Date_app_nlrc");
 					String date_16="";
 					Calendar cal16 = Calendar.getInstance();
-					if(date16.equals("----------")) {
-						date_16=" ";
-					}else {
+					try {
 						java.sql.Date dateDat16 = java.sql.Date.valueOf(date16);
 						cal16.setTime(dateDat16);
 						int date_pM = cal16.get(Calendar.MONTH);
 						int date_pD = cal16.get(Calendar.DAY_OF_MONTH);
 						int date_pY = cal16.get(Calendar.YEAR);
 						date_16=monthList[date_pM]+" "+date_pD+", "+date_pY;
+					}catch(Exception e) {
+						date_16="";
 					}
 //					String date3 = rs.getString("Date_rec_com");
 //					Calendar cal3 = Calendar.getInstance();
