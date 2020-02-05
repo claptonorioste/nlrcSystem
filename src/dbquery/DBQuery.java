@@ -119,7 +119,7 @@ public class DBQuery {
 			String date_prom,String other,String appeal_or,String ap_date,String full_cnum,String full_rab,String bond_amount,
 			String date_bnd_new,String surety,String bnd_num_new,String bndm_new,String app_curr,String amm_curr,
 			String ponente,String decision_on_appeal,String mr_filed_by1,String decision_on_mr1,String date_mr_filed2,
-			String mr_filed_by2,String decision_on_mr2) {
+			String mr_filed_by2,String decision_on_mr2,String curr) {
 		Connection connection = null;
 		connection = DBConnection.dbConnector();
 		String query="insert into nlrc_data (CNum, Title, Date_app_nlrc, Date_rec_oecc, Date_rec_com, Date_app_prom, Date_mr_filed, "
@@ -129,7 +129,7 @@ public class DBQuery {
 				+ "rab_type,appellant,date_prom,other,appeal_or,ap_date,full_cnum,full_rab,bond_amount,"
 				+ "date_bnd_new,surety,bnd_num_new,bndm_new,app_curr,amm_curr,ponente,decision_on_appeal,mr_filed_by1,"
 				+ "decision_on_mr1,date_mr_filed2,mr_filed_by2,decision_on_mr2) "
-				+ "values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+				+ "values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		try {
 			
 			PreparedStatement pst=connection.prepareStatement(query);
@@ -186,6 +186,8 @@ public class DBQuery {
 			pst.setString(51,date_mr_filed2);
 			pst.setString(52,mr_filed_by2);
 			pst.setString(53,decision_on_mr2);
+			pst.setString(54,curr);
+			
 			
 			
 			
@@ -216,7 +218,7 @@ public class DBQuery {
 			String respo,String rab_type,String app,String date_prom,String other,String appeal_or,String ap_date,String full_cnum,
 			String full_rab,String bond_amount,String date_bnd_new,String surety,String bnd_num_new,String bndm_new,
 			String app_curr,String amm_curr,String ponente,String decision_on_appeal,String mr_filed_by1,String decision_on_mr1,
-			String date_mr_filed2,String mr_filed_by2,String decision_on_mr2) {
+			String date_mr_filed2,String mr_filed_by2,String decision_on_mr2,String curr) {
 		Connection connection = null;
 		connection = DBConnection.dbConnector();
 		String query="update nlrc_data set CNum = ?, Title = ?, Date_app_nlrc = ?, Date_rec_oecc = ?, Date_rec_com = ?, Date_app_prom = ?, Date_mr_filed = ?, "
@@ -225,7 +227,7 @@ public class DBQuery {
 				+ "remarks = ?,case_type = ?,male = ?,female = ?,nlrc_case_num = ?,ofw_type=?,complainant=?,respondent=?,"
 				+ "rab_type=?,appellant=?,date_prom=?,other=?,appeal_or=?,ap_date=?,full_cnum=?,full_rab=?,bond_amount=?,date_bnd_new=?,surety=?,bnd_num_new=?,"
 				+ "bndm_new=?,app_curr=?,amm_curr=?,ponente=?,decision_on_appeal=?,mr_filed_by1=?,decision_on_mr1=?,date_mr_filed2=?,"
-				+ "mr_filed_by2=?,decision_on_mr2=? where id = ?";
+				+ "mr_filed_by2=?,decision_on_mr2=?,curr = ? where id = ?";
 		try {
 			
 			PreparedStatement pst=connection.prepareStatement(query);
@@ -282,8 +284,10 @@ public class DBQuery {
 			pst.setString(51, date_mr_filed2);
 			pst.setString(52, mr_filed_by2);
 			pst.setString(53, decision_on_mr2);
+			pst.setString(54, curr);
+			
 			 
-			pst.setString(54, id);
+			pst.setString(55, id);
 			
 			
 			

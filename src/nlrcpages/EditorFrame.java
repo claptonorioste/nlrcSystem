@@ -232,6 +232,7 @@ public class EditorFrame extends JFrame {
 	private JTextArea taDecisiononApp;
 	private JTextArea decisionMR1;
 	private JTextArea decisionMR2;
+	private JComboBox comboBox_4;
 
 	/**
 	 * Create the frame.
@@ -2200,12 +2201,12 @@ public class EditorFrame extends JFrame {
  						(!jValidateButton(dEntryJIM,dEntryJID,dEntryJIY)) && (!jValidateButton(dateRemandedM,dateRemandedD,dateRemandedY)) ) {
 		 				if(edit == 0) {
 		 					String c_type = comboBox.getSelectedItem().toString();
-		 					String dateNLRC =nlrcY.getSelectedItem().toString()+"-"+nlrcM.getSelectedIndex()+1 + "-" + nlrcD.getSelectedItem().toString();
+		 					String dateNLRC =nlrcY.getSelectedItem().toString()+"-"+(nlrcM.getSelectedIndex()+1) + "-" + nlrcD.getSelectedItem().toString();
 		 					String dateApp = dateAppPoneneteY .getSelectedItem().toString()+"-"+dateAppPonenteM.getSelectedIndex() + "-" + dateAppPoneneteD .getSelectedItem().toString();
 		 			
 		 					String dateMR = dateMRY1  .getSelectedItem().toString()+"-"+dateMRM1.getSelectedIndex() + "-" + dateMRD1  .getSelectedItem().toString();
 				 			
-		 					String dateOECC = OECCYear.getSelectedItem().toString()+"-"+OECCMonth.getSelectedIndex()+1 + "-" + OECCDay.getSelectedItem().toString();
+		 					String dateOECC = OECCYear.getSelectedItem().toString()+"-"+(OECCMonth.getSelectedIndex()+1) + "-" + OECCDay.getSelectedItem().toString();
 		 					String ej = entryJY .getSelectedItem().toString()+"-"+entryJM.getSelectedIndex() + "-" + entryJD .getSelectedItem().toString();
 		 					
 		 					String dateComm = ponenteDY.getSelectedItem().toString()+"-"+ponenteDM.getSelectedIndex() + "-" + ponenteDD.getSelectedItem().toString();
@@ -2245,7 +2246,7 @@ public class EditorFrame extends JFrame {
 			 						appelant.getSelectedItem().toString(),date_prom,other.getText(),appealOr.getText(),appp_date,full_cnum,full_rab,
 			 						BondAmount.getText(),bndDM,textField_11.getText(),textField_12.getText(),bndm_new,comboBox_6.getSelectedItem().toString(),
 			 						ammCurrency.getSelectedItem().toString(),tfPonente.getText(),taDecisiononApp.getText(),mrFiled1.getText(),
-			 						decisionMR1.getText(),dtmR2,mrFiled2.getText(),decisionMR2.getText());
+			 						decisionMR1.getText(),dtmR2,mrFiled2.getText(),decisionMR2.getText(),comboBox_4.getSelectedItem().toString());
 			 				JOptionPane.showMessageDialog(null,"Case Recorded!");
 
 
@@ -2302,11 +2303,11 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
 			 				
 		 				}else {
 		 					String c_type = comboBox.getSelectedItem().toString();
-		 					String dateNLRC = nlrcY.getSelectedItem().toString()+"-"+nlrcM.getSelectedIndex()+1 + "-" + nlrcD.getSelectedItem().toString();
+		 					String dateNLRC = nlrcY.getSelectedItem().toString()+"-"+(nlrcM.getSelectedIndex()+1) + "-" + nlrcD.getSelectedItem().toString();
 		 					String dateApp = dateAppPoneneteY .getSelectedItem().toString()+"-"+dateAppPonenteM.getSelectedIndex() + "-" + dateAppPoneneteD .getSelectedItem().toString();
 				 			String dateMR = dateMRY1  .getSelectedItem().toString()+"-"+dateMRM1.getSelectedIndex() + "-" + dateMRD1  .getSelectedItem().toString();
 				 			
-		 					String dateOECC = OECCYear.getSelectedItem().toString()+"-"+OECCMonth.getSelectedIndex()+1 + "-" + OECCDay.getSelectedItem().toString();
+		 					String dateOECC = OECCYear.getSelectedItem().toString()+"-"+(OECCMonth.getSelectedIndex()+1) + "-" + OECCDay.getSelectedItem().toString();
 		 					String dateComm = ponenteDY .getSelectedItem().toString()+"-"+ponenteDM .getSelectedIndex() + "-" + ponenteDD .getSelectedItem().toString();
 		 					String ej = entryJY .getSelectedItem().toString()+"-"+entryJM .getSelectedIndex() + "-" + entryJD .getSelectedItem().toString();
 		 					String dateMRpro = rabDY.getSelectedItem().toString()+"-"+rabDM.getSelectedIndex() + "-" + rabDD.getSelectedItem().toString();
@@ -2343,7 +2344,7 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
 		 								 appelant.getSelectedItem().toString(),date_prom,other.getText(),appealOr.getText(),appp_date,full_cnum,full_rab,
 		 								 BondAmount.getText(),bndDM,textField_11.getText(),textField_12.getText(),bndm_new,
 		 								 comboBox_6.getSelectedItem().toString(),ammCurrency.getSelectedItem().toString(),tfPonente.getText(),
-		 								 taDecisiononApp.getText(),mrFiled1.getText(),decisionMR1.getText(),dtmR2,mrFiled2.getText(),decisionMR2.getText());
+		 								 taDecisiononApp.getText(),mrFiled1.getText(),decisionMR1.getText(),dtmR2,mrFiled2.getText(),decisionMR2.getText(),comboBox_4.getSelectedItem().toString());
 		 						 JOptionPane.showMessageDialog(null,"Case Updated!");
 
 
@@ -2826,6 +2827,7 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
 	 		natureofA.setColumns(10);
 	 		
 	 		ammCurrency = new JComboBox();
+	 		ammCurrency.addItem("--");
 	 		for(int x = 0;x<currency.length;x++) {
 	 			ammCurrency.addItem(currency[x]);
 	 		}
@@ -2898,6 +2900,7 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
 	 		LA.setColumns(10);
 	 		
 	 		comboBox_6 = new JComboBox();
+	 		comboBox_6.addItem("--");
 	 		for(int x = 0;x<currency.length;x++) {
 	 			comboBox_6.addItem(currency[x]);
 	 		}
@@ -3290,6 +3293,7 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
 	 		label_58.setFont(new Font("Arial", Font.BOLD, 12));
 	 		
 	 		comboBox_5 = new JComboBox();
+	 		comboBox_5.addItem("--");
 	 		comboBox_5.addItem("ELA");
 	 		comboBox_5.addItem("LA");
 	 		
@@ -4215,6 +4219,12 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
 	 		label_79.setHorizontalAlignment(SwingConstants.CENTER);
 	 		label_79.setForeground(Color.WHITE);
 	 		label_79.setFont(new Font("Arial", Font.ITALIC, 10));
+	 		
+	 		comboBox_4 = new JComboBox();
+	 		comboBox_4.addItem("--");
+	 		for(int x = 0;x<currency.length;x++) {
+	 			comboBox_4.addItem(currency[x]);
+	 		}
 	 		GroupLayout gl_panel_21 = new GroupLayout(panel_21);
 	 		gl_panel_21.setHorizontalGroup(
 	 			gl_panel_21.createParallelGroup(Alignment.LEADING)
@@ -4277,10 +4287,10 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
 	 				.addGroup(gl_panel_21.createSequentialGroup()
 	 					.addGap(22)
 	 					.addGroup(gl_panel_21.createParallelGroup(Alignment.LEADING)
-	 						.addComponent(natureOfC, GroupLayout.PREFERRED_SIZE, 179, GroupLayout.PREFERRED_SIZE)
 	 						.addGroup(gl_panel_21.createSequentialGroup()
 	 							.addGap(10)
-	 							.addComponent(label_29, GroupLayout.PREFERRED_SIZE, 97, GroupLayout.PREFERRED_SIZE)))
+	 							.addComponent(label_29, GroupLayout.PREFERRED_SIZE, 97, GroupLayout.PREFERRED_SIZE))
+	 						.addComponent(natureOfC, GroupLayout.PREFERRED_SIZE, 179, GroupLayout.PREFERRED_SIZE))
 	 					.addGap(315)
 	 					.addGroup(gl_panel_21.createParallelGroup(Alignment.LEADING)
 	 						.addGroup(gl_panel_21.createSequentialGroup()
@@ -4308,6 +4318,24 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
 	 					.addComponent(label_18, GroupLayout.PREFERRED_SIZE, 123, GroupLayout.PREFERRED_SIZE)
 	 					.addGap(382)
 	 					.addComponent(label_23, GroupLayout.PREFERRED_SIZE, 176, GroupLayout.PREFERRED_SIZE))
+	 				.addGroup(gl_panel_21.createSequentialGroup()
+	 					.addGap(22)
+	 					.addComponent(ammCurrency, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE)
+	 					.addGap(1)
+	 					.addComponent(ammOfAward, GroupLayout.PREFERRED_SIZE, 156, GroupLayout.PREFERRED_SIZE)
+	 					.addGap(262)
+	 					.addComponent(dateAppPonenteM, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
+	 					.addGap(11)
+	 					.addComponent(dateAppPoneneteD, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
+	 					.addGap(10)
+	 					.addComponent(dateAppPoneneteY, GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE)
+	 					.addGap(16)
+	 					.addComponent(label_74, GroupLayout.PREFERRED_SIZE, 82, GroupLayout.PREFERRED_SIZE))
+	 				.addGroup(gl_panel_21.createSequentialGroup()
+	 					.addGap(22)
+	 					.addComponent(label_24, GroupLayout.PREFERRED_SIZE, 137, GroupLayout.PREFERRED_SIZE)
+	 					.addGap(368)
+	 					.addComponent(label_95, GroupLayout.PREFERRED_SIZE, 176, GroupLayout.PREFERRED_SIZE))
 	 				.addGroup(gl_panel_21.createSequentialGroup()
 	 					.addGap(22)
 	 					.addGroup(gl_panel_21.createParallelGroup(Alignment.LEADING)
@@ -4426,7 +4454,7 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
 	 							.addComponent(label_28, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE)
 	 							.addGap(15)
 	 							.addComponent(comboBox_6, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE)
-	 							.addPreferredGap(ComponentPlacement.RELATED)
+	 							.addGap(6)
 	 							.addComponent(appealFee, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE))
 	 						.addGroup(gl_panel_21.createSequentialGroup()
 	 							.addGap(10)
@@ -4484,7 +4512,9 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
 	 					.addGap(42)
 	 					.addComponent(label_41, GroupLayout.PREFERRED_SIZE, 49, GroupLayout.PREFERRED_SIZE)
 	 					.addGap(12)
-	 					.addComponent(BondAmount, GroupLayout.PREFERRED_SIZE, 238, GroupLayout.PREFERRED_SIZE)
+	 					.addComponent(comboBox_4, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE)
+	 					.addGap(6)
+	 					.addComponent(BondAmount, GroupLayout.PREFERRED_SIZE, 159, GroupLayout.PREFERRED_SIZE)
 	 					.addGap(175)
 	 					.addGroup(gl_panel_21.createParallelGroup(Alignment.LEADING)
 	 						.addGroup(gl_panel_21.createSequentialGroup()
@@ -4551,25 +4581,6 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
 	 				.addGroup(gl_panel_21.createSequentialGroup()
 	 					.addGap(516)
 	 					.addComponent(panel_23, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-	 				.addGroup(gl_panel_21.createSequentialGroup()
-	 					.addGap(22)
-	 					.addGroup(gl_panel_21.createParallelGroup(Alignment.LEADING)
-	 						.addGroup(gl_panel_21.createSequentialGroup()
-	 							.addComponent(ammCurrency, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE)
-	 							.addGap(1)
-	 							.addComponent(ammOfAward, GroupLayout.PREFERRED_SIZE, 156, GroupLayout.PREFERRED_SIZE)
-	 							.addGap(269)
-	 							.addComponent(dateAppPonenteM, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
-	 							.addGap(10)
-	 							.addComponent(dateAppPoneneteD, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
-	 							.addGap(10)
-	 							.addComponent(dateAppPoneneteY, GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE)
-	 							.addGap(10)
-	 							.addComponent(label_74, GroupLayout.PREFERRED_SIZE, 82, GroupLayout.PREFERRED_SIZE))
-	 						.addGroup(gl_panel_21.createSequentialGroup()
-	 							.addComponent(label_24, GroupLayout.PREFERRED_SIZE, 137, GroupLayout.PREFERRED_SIZE)
-	 							.addGap(368)
-	 							.addComponent(label_95, GroupLayout.PREFERRED_SIZE, 176, GroupLayout.PREFERRED_SIZE))))
 	 		);
 	 		gl_panel_21.setVerticalGroup(
 	 			gl_panel_21.createParallelGroup(Alignment.LEADING)
@@ -4622,10 +4633,10 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
 	 						.addComponent(OECCYear, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 	 					.addGap(8)
 	 					.addGroup(gl_panel_21.createParallelGroup(Alignment.LEADING)
+	 						.addComponent(label_29, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
 	 						.addGroup(gl_panel_21.createSequentialGroup()
 	 							.addGap(19)
 	 							.addComponent(natureOfC, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-	 						.addComponent(label_29, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
 	 						.addComponent(label_88, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
 	 						.addGroup(gl_panel_21.createSequentialGroup()
 	 							.addGap(19)
@@ -4645,13 +4656,12 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
 	 						.addComponent(label_18, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
 	 						.addComponent(label_23, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE))
 	 					.addGroup(gl_panel_21.createParallelGroup(Alignment.LEADING)
+	 						.addComponent(ammCurrency, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+	 						.addComponent(ammOfAward, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 	 						.addComponent(dateAppPonenteM, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 	 						.addComponent(dateAppPoneneteD, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 	 						.addComponent(dateAppPoneneteY, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-	 						.addComponent(label_74, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
-	 						.addGroup(gl_panel_21.createParallelGroup(Alignment.BASELINE)
-	 							.addComponent(ammOfAward, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-	 							.addComponent(ammCurrency, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+	 						.addComponent(label_74, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE))
 	 					.addGap(7)
 	 					.addGroup(gl_panel_21.createParallelGroup(Alignment.LEADING)
 	 						.addComponent(label_24, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
@@ -4799,6 +4809,9 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
 	 						.addGroup(gl_panel_21.createSequentialGroup()
 	 							.addGap(11)
 	 							.addComponent(label_41, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE))
+	 						.addGroup(gl_panel_21.createSequentialGroup()
+	 							.addGap(12)
+	 							.addComponent(comboBox_4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 	 						.addGroup(gl_panel_21.createSequentialGroup()
 	 							.addGap(11)
 	 							.addComponent(BondAmount, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
@@ -5565,9 +5578,7 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
 				activeSettings = 0;
 				btnHome.setBackground(Color.decode("#374b5e"));
 				panel_3.setBackground(new Color(55, 75, 94));
-				
 			
-				
 				ResultSet rs = DBQuery.getEmployee(Login.getAccountID());
 				try {
 					while(rs.next()) {
@@ -5641,7 +5652,8 @@ DefaultTableModel tm = (DefaultTableModel) DbUtils.resultSetToTableModel(DBQuery
 				
 				btnUser.setBackground(Color.decode("#374b5e"));
 				panel_2.setBackground(new Color(55, 75, 94));
-		
+				
+			
 			
 				
 				
@@ -6899,7 +6911,7 @@ table_3.setFocusable(false);
 				 		+ "</tr>"
 				 		+ "<tr>"
 				 		+ "<td>"+rs.getString("bond")+"</td>"
-				 		+ "<td>"+rs.getString("bond_amount")+"</td>"
+				 		+ "<td>"+rs.getString("bond_amount")+rs.getString("bond_amount")+"</td>"
 				 		+ "<td>"+rs.getString("bond_date_or")+"</td>"
 				 		+ "<td>"+date_7+"</td>"
 				 		+ "<td>"+rs.getString("surety")+"</td>"
